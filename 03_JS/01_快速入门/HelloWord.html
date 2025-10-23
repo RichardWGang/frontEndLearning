@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        alert('Hello Word');
+        // 数据类型：number、字符串、布尔值
+
+        // 对象
+        var person = {
+            name: 'Bob',
+            age: 20,
+            tags: ['js', 'web', 'mobile'],
+            city: 'Beijing',
+            hasCar: true,
+            zipcode: null
+        };
+        console.log("姓名：", person.name)
+
+        // strict模式
+        // function Hello() {
+        //     'use strict';
+        //     helloStr = 'hello'; // 没有声明变量，会报错
+        //     console.log(helloStr);
+        // }
+        // Hello();
+
+        // 字符串
+        var string = '这是一个单行字符串';
+        var string2 = `这是一个
+                           多行字符串`;
+        console.log(string2);
+
+        // 模板字符串
+        // let name = '小明';
+        // let age = 20;
+        // let message = '你好, ' + name + ', 你今年' + age + '岁了!';
+        // alert(message);
+
+        let name = '小明';
+        let age = 20;
+        let message = `你好, ${name}, 你今年${age}岁了!`;
+        alert(message);
+
+
+        // 数组
+        let arr = [[1, 2, 3], [400, 500, 600], '-'];
+        let x = arr[1][1];
+        console.log(x);
+
+
+
+    </script>
+
+</head>
+
+<body>
+    <p>你好</p>
+</body>
+
+</html>
