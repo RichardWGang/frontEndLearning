@@ -52,6 +52,40 @@
         let x = arr[1][1];
         console.log(x);
 
+        // 对象
+        let preson2 = {
+            name: '小明',
+            age: 28,
+            sex: '男'
+        };
+
+        console.log("对象名字：", preson2.name);
+
+        delete preson2.age;
+
+        console.log(preson2.age);
+
+        preson2.age = 21;
+
+        console.log(preson2.hasOwnProperty('name'));
+
+        // 循环
+        let o = {
+            name: 'Jack',
+            age: 20,
+            city: 'Beijing'
+        };
+        for (let key in o) {
+            if (o.hasOwnProperty(key)) {
+                console.log(key); // 'name', 'age', 'city'
+            }
+        };
+
+        let a;
+        for (let i = 0; i < o.length; i++) {
+            a = o[i];
+            console.log(a);
+        }
 
 
     </script>

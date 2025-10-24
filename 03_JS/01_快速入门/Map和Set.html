@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let m = new Map();
+        let s = new Set();
+        console.log('你的浏览器支持Map和Set！');
+
+
+        let map2 = new Map([['小明', 60], ['小红', 66]]);
+        console.log(map2.get('小红'));
+
+        map2.set('Adam', 67); // 添加新的key-value
+        map2.set('Bob', 59);
+        map2.has('Adam'); // 是否存在key 'Adam': true
+        map2.get('Adam'); // 67
+        map2.delete('Adam'); // 删除key 'Adam'
+        map2.get('Adam'); // undefined
+
+
+        let s1 = new set();
+        s1.add(4);
+        s1.add(5);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

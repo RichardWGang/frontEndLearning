@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数定义和调用</title>
+
+    <script>
+        // 定义
+        function abs(x) {
+            if (x > 0) {
+                return x;
+            } else {
+                return -x;
+            }
+        }
+        console.log(abs(2));
+
+
+        let abs1 = function (x) {
+            if (x > 0) {
+                return x;
+            } else {
+                return -x;
+            }
+        };
+
+        // 关键字
+        function foo(x) {
+            console.log('x = ' + x); // 10
+            for (let i = 0; i < arguments.length; i++) {
+                console.log('arg ' + i + ' = ' + arguments[i]); // 10, 20, 30
+            }
+        }
+        foo(10, 20, 30);
+
+        // 
+        function sum(...rest) {
+            let sum = 0;
+            for(let i =0; i < rest.length; i++){
+                sum += rest[i];
+            }
+            return sum;
+        }
+
+        console.log('接收任意参数求和结果：' + sum(1, 2, 3, 4));
+
+
+
+    </script>
+
+
+</head>
+
+<body>
+
+</body>
+
+</html>
