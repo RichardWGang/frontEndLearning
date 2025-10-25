@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 通用选择器 */
+        * {
+            color: red; /* 优先级最低 */
+        }
+
+        /* 元素选择器 */
+        h2 {
+            color: purple; /* 优先级高于通用选择器 */
+        }
+
+        /* 类选择器 */
+        .highlight {
+            color: green; /* 优先级高于类型选择器 */
+        }
+
+        /* ID选择器 */
+        #unique {
+            color: orange; /* 优先级高于类选择器 */
+        }
+
+        .container span.slogan {
+            color: blue; /* 优先级高于 */
+        }
+
+        div>p>span:nth-child(1) {
+            color: brown; /* 优先级最高 */
+        }
+
+        .slogan {
+            color: pink !important; /* 使用!important提升优先级 */
+        }
+    
+    </style>
+</head>
+<body>
+    <h2 class="highlight" style="color: black;">选择器优先级</h2>
+    <div class="container">
+        <p>
+            <span class="slogan">选择器优先级测试文本</span>
+            <span>测试文本1</span>
+            <span>测试文本2</span>
+            <span>测试文本3</span>
+            <span>测试文本4</span>
+            <span>测试文本5</span>
+        </p>
+    </div>
+</body>
+</html>
