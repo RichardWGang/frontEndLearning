@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // map函数
+        function pow(x) {
+            return x * x;
+        }
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let results = arr.map(pow); // [1, 4, 9, 16, 25, 36, 49, 64, 81]
+        console.log(results);
+
+        // reduce函数
+        function product(arr) {
+
+            return;
+        }
+        const product = numbers.reduce((accumulator, currentValue) => {
+            return accumulator * currentValue;
+        }, 1); // 初始值设为 1，因为任何数乘以 1 都不会改变其值
+        // 测试:
+        if (product([1, 2, 3, 4]) === 24 && product([0, 1, 2]) === 0 &&
+            product([99, 88, 77, 66]) === 44274384) {
+            console.log('测试通过!');
+        }
+        else {
+            console.log('测试失败!');
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

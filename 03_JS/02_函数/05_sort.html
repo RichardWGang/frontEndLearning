@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 默认排序
+        let arr = [10, 20, 1, 2];
+        // arr.sort();
+        console.log('默认排序后的结果：', arr);
+
+        // 自定义排序
+        arr.sort(function (x, y) {
+            if (x > y) {
+                return -1;
+            } else if (x < y) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+        console.log('自定义排序后的结果：', arr);
+
+        let arr1 = ['apple', 'Pear', 'orange'];
+        console.log(arr1.every(function (s) {
+            return s.length > 0;
+        })); // true, 因为每个元素都满足s.length>0
+
+        console.log(arr1.every(function (s) {
+            return s.toLowerCase() === s;
+        })); // false, 因为不是每个元素都全部是小写
+
+
+        let arr2 = ['Apple', 'pear', 'orange'];
+        console.log(arr2.find(function (s) {
+            return s.toLowerCase() === s;
+        })); // 'pear', 因为pear全部是小写
+
+        console.log(arr2.find(function (s) {
+            return s.toUpperCase() === s;
+        })); // undefined, 因为没有全部是大写的元素
+
+        let arr3 = ['Apple', 'pear', 'orange'];
+        console.log(arr3.findIndex(function (s) {
+            return s.toLowerCase() === s;
+        })); // 1, 因为'pear'的索引是1
+        console.log(arr3.findIndex(function (s) {
+            return s.toUpperCase() === s;
+        })); // -1
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

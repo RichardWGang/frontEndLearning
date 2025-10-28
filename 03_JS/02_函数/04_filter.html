@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // let arr = [1, 2, 4, 5, 6, 9, 10, 15];
+        // let r = arr.filter(function (x) {
+        //     return x % 2 != 0; // 如果为true，则保留该元素
+        // });
+        // console.log(r);
+
+        let arr1 = ['A', 'B', 'C'];
+        let r1 = arr1.filter(function (element, index, self) {
+            console.log(element); // 依次打印'A', 'B', 'C'
+            console.log(index); // 依次打印0, 1, 2
+            console.log(self); // self就是变量arr
+            return true;
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
