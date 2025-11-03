@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>标准对象</title>
+
+    <script>
+        console.log(typeof 123); // 'number'
+        typeof 123n; // 'bigint'
+        typeof NaN; // 'number'
+        typeof 'str'; // 'string'
+        typeof true; // 'boolean'
+        typeof undefined; // 'undefined'
+        typeof Math.abs; // 'function'
+        typeof null; // 'object'
+        typeof []; // 'object'
+        typeof {}; // 'object'
+
+        // 包装对象
+        typeof new Number(123); // 'object'
+        new Number(123) === 123; // false
+
+        // Date
+        let now = new Date();
+        now.getFullYear(); // 2015, 年份
+        now.getMonth(); // 5, 月份，注意月份范围是0~11，5表示六月
+        now.getDate(); // 24, 表示24号
+        now.getDay(); // 3, 表示星期三
+        now.getHours(); // 19, 24小时制
+        now.getMinutes(); // 49, 分钟
+        now.getSeconds(); // 22, 秒
+        now.getMilliseconds(); // 875, 毫秒数
+        now.getTime(); // 1435146562875, 以number形式表示的时间戳
+
+        let d = Date.parse('2015-06-24T19:49:22.875+08:00');
+        console.log(d); // 1435146562875
+
+        let d1 = new Date(1435146562875);
+        d1; // Wed Jun 24 2015 19:49:22 GMT+0800 (CST)
+        d1.getMonth();
+
+        console.log('当前时间戳：', Date.now());
+        console.log(new Date().getTime());
+
+        let today = new Date();
+        console.log('月份', today.getMonth()); // 注意getMonth()返回的月份是从00~11
+
+
+    </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>

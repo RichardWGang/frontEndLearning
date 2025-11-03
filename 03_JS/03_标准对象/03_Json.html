@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json</title>
+    <script>
+        let xiaoming = {
+            name: '小明',
+            age: 14,
+            gender: true,
+            height: 1.65,
+            grade: null,
+            'middle-school': '\"W3C\" Middle School',
+            skills: ['JavaScript', 'Java', 'Python', 'Lisp']
+        };
+        let s = JSON.stringify(xiaoming);
+        console.log(s);
+
+        let myObjet = JSON.parse('{"name":"小明","age":14}');
+        console.log(myObjet);
+
+        let url = 'https://api.openweathermap.org/data/2.5/forecast?q=Beijing,cn&appid=800f49846586c3ba6e7052cfc89af16c';
+        fetch(url).then(resp => {
+            resp.json().then(data => {
+                let info = {
+                    city: data.city.name,
+                    weather: data.list[0].weather[0].main,
+                    time: data.list[0].dt_txt
+                };
+                alert(JSON.stringify(info, null, ' '));
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
