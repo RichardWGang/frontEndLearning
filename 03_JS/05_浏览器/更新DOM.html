@@ -8,13 +8,21 @@
 </head>
 
 <body>
-    <div>
+    <!-- <div>
         <p id="p-id">这是一个P标签</p>
     </div>
 
     <div id="test-div">
         <p id="test-js">javascript</p>
         <p>Java</p>
+    </div> -->
+
+    <!-- HTML结构 -->
+    <p id="js">JavaScript</p>
+    <div id="list">
+        <p id="java">Java</p>
+        <p id="python">Python</p>
+        <p id="scheme">Scheme</p>
     </div>
 
     <script>
@@ -25,9 +33,9 @@
         // p.innerHTML = 'ABC';
         // // 设置HTML:
         // p.innerHTML = 'ABC <span style="color:red">RED</span> XYZ'; // <p>...</p>的内部结构已修改
-        
 
-        
+
+
         // 获取<p>javascript</p>节点:
         let js = document.getElementById('test-js');
 
@@ -37,6 +45,12 @@
         // 修改CSS为: color: #ff0000, font-weight: bold
         js.style.color = '#ff0000';
         js.style.fontWeight = 'bold';
+
+
+        // 插入DOM
+        let j = document.getElementById('js');
+        let list = document.getElementsById('list');
+        list.appendChild(j);
     </script>
 </body>
 
