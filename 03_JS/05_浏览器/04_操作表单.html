@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="input-box">
+    <input type="date" value="2021-12-02">
+    <input type="datetime-local" value="2021-12-02T20:21:12">
+
+    <form id="test-form">
+        <input type="text" name="test">
+        <button type="button" onclick="doSubmitForm()">Submit</button>
+    </form>
+
+    <form id="test-form2" onsubmit="return checkForm()">
+        <input type="text" id = "input-test" name="test">
+        <button type="submit">Submit</button>
+    </form>
+
+    <input type="file" id = "upload_file_test" value="选择文件" >
+
+
+    <script>
+        let inputBox = document.getElementById('input-box');
+
+        // 设置输入框的值:
+        inputBox.value = 'Hello, World!';
+
+        // 读取输入框的值:
+        console.log(inputBox.value);
+
+
+        function doSubmitForm() {
+            let form = document.getElementById('test-form');
+            // 可以在此修改form的input...
+            // 提交form:
+            form.submit();
+        }
+
+        function checkForm() {
+            let form = doccument.getElementById('test-form2');
+            let input = document.getElementById('input-test');
+            console.log('正在提交表单...', input.value);
+
+            return false; // 允许提交
+        }
+
+        document.getElementById('upload_file_test').onchange = function() {
+            let fileInput = document.getElementById('upload_file_test');
+            let files = fileInput.files; // 获取FileList对象
+            for (let i = 0; i < files.length; i++) {
+                let file = files[i];
+                console.log('文件名:', file.name);
+                console.log('文件大小:', file.size);
+                console.log('最后修改时间:', file.lastModifiedDate);
+            }
+        };  
+    </script>
+</body>
+
+</html>
