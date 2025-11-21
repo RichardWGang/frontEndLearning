@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+    <style>
+        /* 清除所有默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .leftfix {
+            float: left;
+        }
+        .rightfix {
+            float: right;
+        }
+        /* 清除浮动 */
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+
+        .container {
+            width: 960px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .logo {
+            width: 200px;
+            height: 80px;
+            background-color: lightgray;
+        }
+        .banner1 {
+            width: 540px;
+            height: 80px;
+            margin: 0 10px;
+            background-color: lightgray;
+        }
+        .banner2 {
+            width: 200px;
+            height: 80px;
+            background-color: lightgray;
+        }
+
+        .logo, .banner1, .banner2 {
+            line-height: 80px;
+            font-size: 24px;
+        }
+
+        .menu {
+            width: 960px;
+            height: 30px;
+            margin-top: 10px;
+            background-color: lightblue;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 头部 -->
+        <div class="page-header clearfix">
+            <div class="logo leftfix">logo</div>
+            <div class="banner1 leftfix" >banner1</div>
+            <div class="banner2 leftfix">banner2</div>
+        </div>
+        <div class="menu">菜单</div>
+    </div>
+
+</body>
+</html>
