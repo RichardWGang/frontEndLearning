@@ -36,6 +36,20 @@
         let p3 = p2.catch(function (reason) {
             console.log('失败：' + reason);
         });
+
+        async function get(url) {
+            let resp = await fetch(url);
+            return resp.json();
+        }
+
+        function doGet() {
+            let data = get('https://toolskit.test.mi.com/micro/scenes?pageNumber=1&pageSize=10');
+            console.log(data);
+        }
+        doGet();
+
+
+
     </script>
 </body>
 

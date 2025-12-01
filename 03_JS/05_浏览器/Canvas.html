@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            background: #fff;
+        }
+        a {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 8px 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HTML代码 -->
+    <canvas id="test-canvas" width="200" heigth="100">
+        <p>你的浏览器不支持Canvas</p>
+    </canvas>
+
+    <canvas id="test-shape-canvas" width="200" heigth="100">
+
+    </canvas>
+
+    <h2>天气温度折线图</h2>
+    <canvas id="weather-canvas" width="400" height="200"></canvas>
+    <br>
+    <a id="weather-download" href="#">下载图表</a>
+
+    <script>
+
+        let canvas = document.getElementById('test-canvas');
+        if (canvas.getContext) {
+            console.log('你的浏览器支持Canvas!');
+        } else {
+            console.log('你的浏览器不支持Canvas!');
+        }
+
+        let canvas1 = document.getElementById('test-shape-canvas'), ctx = canvas1.getContext('2d');
+        ctx.clearRect(0, 0, 200, 200); // 擦除(0,0)位置大小为200x200的矩形，擦除的意思是把该区域变为透明
+        ctx.fillStyle = '#dddddd'; // 设置颜色
+        ctx.fillRect(10, 10, 130, 130); // 把(10,10)位置大小为130x130的矩形涂色
+        // 利用Path绘制复杂路径:
+        let path = new Path2D();
+        path.arc(75, 75, 50, 0, Math.PI * 2, true);
+        path.moveTo(110, 75);
+        path.arc(75, 75, 35, 0, Math.PI, false);
+        path.moveTo(65, 65);
+        path.arc(60, 65, 5, 0, Math.PI * 2, true);
+        path.moveTo(95, 65);
+        path.arc(90, 65, 5, 0, Math.PI * 2, true);
+        ctx.strokeStyle = '#0000ff';
+        ctx.stroke(path);
+
+
+        let data = [
+            { high: 35, low: 22 },
+            { high: 37, low: 24 },
+            { high: 37, low: 25 },
+            { high: 34, low: 24 },
+            { high: 33, low: 23 }
+        ];
+
+         // 获取Canvas并绘制天气折线图
+        let canvas2 = document.getElementById('weather-canvas');
+        if (canvas2.getContext) {
+            let ctx2 = canvas2.getContext('2d');
+            
+            // Canvas尺寸
+            let width = canvas2.width;
+            let height = canvas2.height;
+            let padding = 40; // 边距
+            
+            // 绘制背景
+            ctx2.fillStyle = '#f9f9f9';
+            ctx2.fillRect(0, 0, width, height);
+            
+            // 绘制坐标轴
+            ctx2.strokeStyle = '#333';
+            ctx2.lineWidth = 2;
+            ctx2.beginPath();
+            ctx2.moveTo(padding, padding);
+            ctx2.lineTo(padding, height - padding);
+            ctx2.lineTo(width - padding, height - padding);
+            ctx2.stroke();
+            
+            // 绘制网格线和Y轴标签
+            ctx2.strokeStyle = '#ddd';
+            ctx2.lineWidth = 1;
+            ctx2.fillStyle = '#666';
+            ctx2.font = '12px Arial';
+            ctx2.textAlign = 'right';
+            
+            for (let i = 20; i <= 40; i += 5) {
+                let y = height - padding - (i - 20) / 20 * (height - 2 * padding);
+                ctx2.beginPath();
+                ctx2.moveTo(padding, y);
+                ctx2.lineTo(width - padding, y);
+                ctx2.stroke();
+                ctx2.fillText(i + '°C', padding - 10, y + 4);
+            }
+            
+            // X轴标签
+            ctx2.textAlign = 'center';
+            let days = ['周一', '周二', '周三', '周四', '周五'];
+            let xStep = (width - 2 * padding) / (data.length - 1);
+            
+            for (let i = 0; i < days.length; i++) {
+                let x = padding + i * xStep;
+                ctx2.fillText(days[i], x, height - padding + 20);
+            }
+            
+            // 绘制最高温度折线（红色）
+            ctx2.strokeStyle = '#ff6b6b';
+            ctx2.lineWidth = 2;
+            ctx2.beginPath();
+            
+            for (let i = 0; i < data.length; i++) {
+                let x = padding + i * xStep;
+                let y = height - padding - (data[i].high - 20) / 20 * (height - 2 * padding);
+                
+                if (i === 0) {
+                    ctx2.moveTo(x, y);
+                } else {
+                    ctx2.lineTo(x, y);
+                }
+                
+                // 绘制数据点
+                ctx2.fillStyle = '#ff6b6b';
+                ctx2.beginPath();
+                ctx2.arc(x, y, 4, 0, Math.PI * 2);
+                ctx2.fill();
+            }
+            ctx2.stroke();
+            
+            // 绘制最低温度折线（蓝色）
+            ctx2.strokeStyle = '#4ecdc4';
+            ctx2.lineWidth = 2;
+            ctx2.beginPath();
+            
+            for (let i = 0; i < data.length; i++) {
+                let x = padding + i * xStep;
+                let y = height - padding - (data[i].low - 20) / 20 * (height - 2 * padding);
+                
+                if (i === 0) {
+                    ctx2.moveTo(x, y);
+                } else {
+                    ctx2.lineTo(x, y);
+                }
+                
+                // 绘制数据点
+                ctx2.fillStyle = '#4ecdc4';
+                ctx2.beginPath();
+                ctx2.arc(x, y, 4, 0, Math.PI * 2);
+                ctx2.fill();
+            }
+            ctx2.stroke();
+            
+            // 绘制图例
+            let legendY = 10;
+            ctx2.fillStyle = '#ff6b6b';
+            ctx2.fillRect(width - 120, legendY, 12, 12);
+            ctx2.fillStyle = '#333';
+            ctx2.textAlign = 'left';
+            ctx2.font = 'bold 12px Arial';
+            ctx2.fillText('最高温度', width - 100, legendY + 11);
+            
+            ctx2.fillStyle = '#4ecdc4';
+            ctx2.fillRect(width - 120, legendY + 20, 12, 12);
+            ctx2.fillStyle = '#333';
+            ctx2.fillText('最低温度', width - 100, legendY + 31);
+        }
+
+        // 下载:
+        let download = document.getElementById('weather-download');
+        download.href = canvas.toDataURL();
+    </script>
+
+</body>
+
+</html>
