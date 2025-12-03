@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.6/underscore-min.js"></script>
+</head>
+
+<body>
+
+    <script>
+        let obj = {
+            name: 'bob',
+            school: 'No.1 middle school',
+            address: 'xueyuan road'
+        };
+        let upper = _.map(obj, function (value, key) {
+            return key;
+        });
+        console.log(JSON.stringify(upper));
+
+        let arr = [3, 5, 7, 9];
+        _.max(arr); // 9
+        _.min(arr); // 3
+        console.log('最大值：' + _.max(arr));
+        console.log('最小值：' + _.min(arr));
+
+        let scores = [20, 81, 75, 40, 91, 59, 77, 66, 72, 88, 99];
+        let groups = _.groupBy(scores, function (num) {
+            if (num >= 90) {
+                return 'A';
+            } else if (num >= 80) {
+                return 'B';
+            } else if (num >= 70) {
+                return 'C';
+            } else if (num >= 60) {
+                return 'D';
+            } else {
+                return 'E';
+            }
+        });
+        console.log(JSON.stringify(groups));
+    </script>
+
+</body>
+
+</html>
