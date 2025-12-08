@@ -1,6 +1,7 @@
 'use strict';
-const greet = require('./name');
+const moduleA = require('./name');
 
-greet('Alice');
-greet('Bob');
-greet('Charlie');
+moduleA.greet('Alice');
+moduleA.greet('Bob');
+moduleA.greet('Charlie');
+console.log('Goodbye, Node.js!', moduleA.s);
